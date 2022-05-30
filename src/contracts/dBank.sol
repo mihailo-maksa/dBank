@@ -22,7 +22,7 @@ contract dBank {
     token = _token;
   }
 
-  function deposit() payable public {
+  function deposit() public payable {
     require(isDeposited[msg.sender] == false, "Deposit is already active.");
     require(msg.value >= 1e16, "You must deposit 0.01 ETH or more.");
 
@@ -62,7 +62,7 @@ contract dBank {
     emit Withdraw(msg.sender, userBalance, accruedInterest, depositTime);
   }
 
-   function borrow() payable public {
+   function borrow() public payable {
      require(msg.value>=1e16, 'Error, collateral must be >= 0.01 ETH');
      require(isBorrowed[msg.sender] == false, 'Error, loan already taken');
 
